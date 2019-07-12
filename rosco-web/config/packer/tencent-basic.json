@@ -1,0 +1,44 @@
+{
+  "variables": {
+    "tencent_secret_id": "{{env `TENCENTCLOUD_SECRET_ID`}}",
+    "tencent_secret_key": "{{env `TENCENTCLOUD_SECRET_KEY`}}",
+    "tencent_target_image": null,
+    "tencent_instance_type": null,
+    "tencent_source_image_id": null,
+    "tencent_ssh_username": null,
+    "appversion": "",
+    "build_host": "",
+    "repository": "",
+    "package_type": "",
+    "packages": "",
+    "upgrade": "",
+    "configDir": null
+  },
+  "builders": [{
+    "type": "tencentcloud-cvm",
+    "secret_id": "{{user `tencent_secret_id`}}",
+    "secret_key": "{{user `tencent_secret_key`}}",
+    "region": "ap-guangzhou",
+    "zone": "ap-guangzhou-3",
+    "instance_type": "{{user `tencent_instance_type`}}",
+    "source_image_id": "{{user `tencent_source_image_id`}}",
+    "image_name": "{{user `tencent_target_image`}}",
+    "image_description": "Spinnaker Packer Test",
+    "associate_public_ip_address": true,
+    "disk_type": "CLOUD_PREMIUM",
+    "disk_size": 50,
+    "ssh_username" : "{{user `tencent_ssh_username`}}",
+    "packer_debug": true
+  }],
+  "provisioners": [{
+    "type": "shell",
+    "script": "{{user `configDir`}}/install_packages.sh",
+    "environment_vars": [
+      "repository={{user `repository`}}",
+      "package_type={{user `package_type`}}",
+      "packages={{user `packages`}}",
+      "upgrade={{user `upgrade`}}"
+    ],
+    "pause_before": "30s"
+  }]
+}
