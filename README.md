@@ -74,3 +74,20 @@ http://localhost:8087/swagger-ui.html
 docker-compose stop
 docker-machine rm spinnaker
 ```
+
+### Added by 叶静涛
+
+重要配置：
+```
+rosco.configDir:/home/ubuntu/rosco/rosco-web/config/packer #配置packer模板目录的绝对路径
+```
+
+源码启动命令：
+```
+nohup sh -c "./gradlew --daemon 2>&1 | tee /tmp//orca.log | cat >/dev/null" >/dev/null &
+```
+
+JVM远程调试启动（调试端口8187）：
+```
+nohup sh -c "./gradlew -DDEBUG=true --daemon 2>&1 | tee /tmp//orca.log | cat >/dev/null" >/dev/null &
+```
