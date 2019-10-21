@@ -4,7 +4,7 @@ Rosco
 
 A bakery for use by Spinnaker to produce machine images.
 
-It presently supports producing Google Compute Engine images, AWS amis and Azure images. It relies on packer and can be easily extended to support additional platforms.
+It presently supports producing Alibaba Cloud images, Google Compute Engine images, AWS amis and Azure images. It relies on packer and can be easily extended to support additional platforms.
 
 It exposes a REST api which can be experimented with via the Swagger UI: http://localhost:8087/swagger-ui.html
 
@@ -73,21 +73,4 @@ http://localhost:8087/swagger-ui.html
 ```
 docker-compose stop
 docker-machine rm spinnaker
-```
-
-### Added by 叶静涛
-
-重要配置：
-```
-rosco.configDir:/home/ubuntu/rosco/rosco-web/config/packer #配置packer模板目录的绝对路径
-```
-
-源码启动命令：
-```
-nohup sh -c "./gradlew --daemon 2>&1 | tee /tmp//orca.log | cat >/dev/null" >/dev/null &
-```
-
-JVM远程调试启动（调试端口8187）：
-```
-nohup sh -c "./gradlew -DDEBUG=true --daemon 2>&1 | tee /tmp//orca.log | cat >/dev/null" >/dev/null &
 ```

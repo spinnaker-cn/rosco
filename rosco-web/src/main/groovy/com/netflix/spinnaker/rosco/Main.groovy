@@ -18,6 +18,7 @@ package com.netflix.spinnaker.rosco
 
 import com.netflix.spinnaker.rosco.jobs.config.LocalJobConfig
 import com.netflix.spinnaker.rosco.providers.aws.config.RoscoAWSConfiguration
+import com.netflix.spinnaker.rosco.providers.alicloud.config.RoscoAliCloudConfiguration
 import com.netflix.spinnaker.rosco.providers.azure.config.RoscoAzureConfiguration
 import com.netflix.spinnaker.rosco.providers.docker.config.RoscoDockerConfiguration
 import com.netflix.spinnaker.rosco.providers.google.config.RoscoGoogleConfiguration
@@ -53,6 +54,7 @@ import javax.servlet.Filter
 ])
 @Import([
   WebConfig,
+  RoscoAliCloudConfiguration,
   ServiceConfig,
   RoscoAWSConfiguration,
   RoscoAzureConfiguration,
