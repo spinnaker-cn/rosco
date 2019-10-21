@@ -83,7 +83,7 @@ class BakeRequest {
   String account_name
 
   static enum CloudProviderType {
-    aws, azure, docker, gce, openstack, oracle, tencent
+    aws, azure, docker, gce, openstack, oracle, tencent, alicloud
   }
 
   static enum Label {
