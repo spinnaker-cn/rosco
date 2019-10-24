@@ -44,7 +44,7 @@ class RoscoAliCloudConfiguration {
   AliCloudBakeHandler alicloudBakeHandler
 
   @Bean
-  @ConfigurationProperties('alicloud.bakery-defaults')
+  @ConfigurationProperties('alicloud.bakeryDefaults')
   AliCloudBakeryDefaults alicloudBakeryDefaults() {
     new AliCloudBakeryDefaults()
   }
