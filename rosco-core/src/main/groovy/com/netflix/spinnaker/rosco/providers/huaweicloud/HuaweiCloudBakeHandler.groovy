@@ -27,8 +27,8 @@ import org.springframework.stereotype.Component
 @Component
 public class HuaweiCloudBakeHandler extends CloudProviderBakeHandler {
 
-  private static final String IMAGE_NAME_TOKEN = 'huaweicloud-ecs: Creating the image:'
-  private static final String IMAGE_ID_TOKEN = 'huaweicloud-ecs: An image was created:'
+  private static final String IMAGE_NAME_TOKEN = 'huaweicloud-ecs: Creating the image: '
+  private static final String IMAGE_ID_TOKEN = 'huaweicloud-ecs: An image was created: '
 
   ImageNameFactory imageNameFactory = new ImageNameFactory()
 
