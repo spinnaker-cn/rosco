@@ -497,6 +497,37 @@ huaweicloud:
         sourceImageId: f1dd2272-7041-479e-9663-646632b6ac00
         sshUserName: root
 
+hecloud:
+  # The property referenced below, HECLOUD_ENABLED, is not set in the
+  # 'unified config' supported by the spinnaker/spinnaker project. If you
+  # copy/paste this section into a new rosco-local.yml file for use with a
+  # pre-built Spinnaker image, make sure to explicitly set the property's
+  # value to true.
+  enabled: ${HECLOUD_ENABLED:true}
+  bakeryDefaults:
+    templateFile: hecloud.json
+    accessKey: ${HE_ACCESS_KEY:}
+    secretKey: ${HE_SECRET_KEY:}
+    vpcId: ${HE_VPC_ID:}
+    subnetId: ${HE_SUBNET_ID:}
+    baseImages:
+      # sourceImageId is the unique UUID of an hecloud image in a region,
+      # and can be found via console or the image api.
+      # It is immutable for the life of the image.
+      - baseImage:
+          id: ubuntu-1604
+          shortDescription: v16.04
+          detailedDescription: Ubuntu 16.04 server 64bit
+          packageType: deb
+          osType: linux
+          templateFile: hecloud.json
+        virtualizationSettings:
+          - region: CIDC-RP-11
+            flavorId: s3.medium.4
+            sourceImageId: 7f85ac91-b70a-42eb-abfb-2748454cd8e3
+            sshUserName: root
+
+			
 swagger:
   enabled: true
   title: Spinnaker Rosco API

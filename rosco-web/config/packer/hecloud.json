@@ -1,0 +1,49 @@
+{
+  "variables": {
+    "hecloud_access_key": "{{ env `HE_ACCESS_KEY`}}",
+    "hecloud_secret_key": "{{  env `HE_SECRET_KEY`}}",
+    "hecloud_region": "{{env `HE_REGION_NAME`}}",
+    "hecloud_vpc_id": "{{env `HE_VPC_ID`}}",
+    "hecloud_subnet_id": "{{env `HE_SUBNET_ID`}}",
+    "hecloud_eip_bandwidth_size": "5",
+    "hecloud_eip_type": "5_chinamobile",
+    "hecloud_flavor_id": null,
+    "hecloud_source_image": null,
+    "hecloud_image_name": null,
+    "hecloud_ssh_username": null,
+    "appversion": "",
+    "build_host": "",
+    "repository": "",
+    "package_type": "",
+    "packages": "",
+    "upgrade": "",
+    "configDir": null
+  },
+  "builders": [{
+    "type":"chinamobilecloud-ecs",
+    "access_key": "{{user `hecloud_access_key`}}",
+    "secret_key": "{{user `hecloud_secret_key`}}",
+    "region": "{{user `hecloud_region`}}",
+    "image_name": "{{user `hecloud_image_name`}}",
+    "source_image": "{{user `hecloud_source_image`}}",
+    "vpc_id": "{{user `hecloud_vpc_id`}}",
+    "subnets": ["{{user `hecloud_subnet_id`}}"],
+    "flavor": "{{user `hecloud_flavor_id`}}",
+    "security_groups": ["Sys-FullAccess"],
+    "ssh_username": "{{user `hecloud_ssh_username`}}",
+    "eip_bandwidth_size": "{{user `hecloud_eip_bandwidth_size`}}",
+    "eip_type": "{{user `hecloud_eip_type`}}",
+    "instance_name": "spinnaker-build-{{user `hecloud_image_name`}}"
+  }],
+  "provisioners": [{
+    "type": "shell",
+    "script": "{{user `configDir`}}/install_packages.sh",
+    "environment_vars": [
+      "repository={{user `repository`}}",
+      "package_type={{user `package_type`}}",
+      "packages={{user `packages`}}",
+      "upgrade={{user `upgrade`}}"
+    ],
+    "pause_before": "30s"
+  }]
+}
