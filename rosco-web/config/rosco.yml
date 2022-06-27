@@ -527,7 +527,7 @@ hecloud:
             sourceImageId: 7f85ac91-b70a-42eb-abfb-2748454cd8e3
             sshUserName: root
 
-			
+
 swagger:
   enabled: true
   title: Spinnaker Rosco API
