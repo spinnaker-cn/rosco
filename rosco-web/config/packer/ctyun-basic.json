@@ -1,0 +1,46 @@
+{
+  "builders": [
+    {
+      "type": "ctyun-basic",
+      "client_token": "{{user `ctyun_client_token`}}",
+      "access_key": "6f4992caea9048f192f4077d1600b59e",
+      "secret_key": "8158e147442a43829fc80a007d507c02",
+      "region_id": "{{user `ctyun_region_id`}}",
+      "az_name": "cn-huadong1-jsnj1A-public-ctcloud",
+      "display_name": "可用区1",
+      "network_card_list": [{"isMaster": true, "subnetID": "subnet-1ggql01vr7"}],
+
+      "image_id": "{{user `ctyun_source_image_id`}}",
+      "instance_name": "{{user `ctyun_target_image`}}",
+      "image_type": 1,
+
+      "flavor_id": "34e1b6f6-e974-1575-20b2-172ba0e0bf83",
+      "boot_disk_type": "SATA",
+      "boot_disk_size": 40,
+      "vpc_id": "vpc-jr8shq0ec3",
+      "ext_ip": "0",
+      "on_demand": false,
+      "root_password": "Packer@135.",
+      "band_width":1,
+
+      "ssh_private_key_file":"",
+      "ssh_keypair_name":"",
+      "communicator":"ssh",
+      "ssh_username": "root",
+      "ssh_password": "Packer@135.",
+      "ssh_timeout" : "60s"
+    }
+  ],
+
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "sleep 3",
+        "echo 123",
+        "pwd"
+      ]
+    }
+  ]
+}
+
