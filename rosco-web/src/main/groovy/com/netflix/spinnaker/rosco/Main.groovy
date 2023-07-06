@@ -20,6 +20,7 @@ import com.netflix.spinnaker.rosco.jobs.config.LocalJobConfig
 import com.netflix.spinnaker.rosco.providers.aws.config.RoscoAWSConfiguration
 import com.netflix.spinnaker.rosco.providers.alicloud.config.RoscoAliCloudConfiguration
 import com.netflix.spinnaker.rosco.providers.azure.config.RoscoAzureConfiguration
+import com.netflix.spinnaker.rosco.providers.ctyun.config.RoscoCtyunConfiguration
 import com.netflix.spinnaker.rosco.providers.docker.config.RoscoDockerConfiguration
 import com.netflix.spinnaker.rosco.providers.google.config.RoscoGoogleConfiguration
 import com.netflix.spinnaker.rosco.providers.openstack.config.RoscoOpenstackConfiguration
@@ -67,7 +68,8 @@ import javax.servlet.Filter
   RoscoTencentConfiguration,
   RoscoHuaweiCloudConfiguration,
   RoscoHeCloudConfiguration,
-  LocalJobConfig
+  LocalJobConfig,
+  RoscoCtyunConfiguration
 ])
 @EnableAutoConfiguration(exclude = [BatchAutoConfiguration, GroovyTemplateAutoConfiguration])
 @EnableScheduling
