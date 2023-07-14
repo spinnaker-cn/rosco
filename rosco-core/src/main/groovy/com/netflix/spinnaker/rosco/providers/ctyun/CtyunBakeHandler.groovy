@@ -142,17 +142,21 @@ public class CtyunBakeHandler extends CloudProviderBakeHandler {
   @Override
   Bake scrapeCompletedBakeResults(String region, String bakeId, String logsContent) {
     log.info("enter scrapeCompletedBakeResults, with $region, $bakeId, $logsContent")
-    String amiId
-    String imageName
+    String amiId = ""
+    String imageName = ""
 
     // TODO(duftler): Presently scraping the logs for the image name/id. Would be better to not be reliant on the log
     // format not changing. Resolve this by storing bake details in redis and querying oort for amiId from amiName.
     logsContent.eachLine { String line ->
       if (line =~ IMAGE_NAME_TOKEN) {
         String imageIdName = line.split(IMAGE_NAME_TOKEN).last()
-        String[] imgs = imageIdName.split(",")
-        amiId = imgs.first()
-        imageName = imgs.last()
+        if(imageIdName!=null&&imageIdName.size()>0){
+          String[] imgs = imageIdName.split(",")
+          if(imgs!=null&&imgs.size()>0){
+            amiId = imgs.first()
+            imageName = imgs.last()
+          }
+        }
       }
       /*else if (line =~ "$region:") {
         amiId = line.split("ctyun-ecs: Ctyun images\\($region: ").last().split("\\)").first()
