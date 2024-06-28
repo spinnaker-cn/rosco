@@ -1,0 +1,45 @@
+{
+  "variables": {
+    "ecloud_access_key": "",
+    "ecloud_secret_key": "",
+    "ecloud_source_image_id": "",
+    "source_image_name": "",
+    "image_name": "",
+    "vpc_id": "",
+    "subnet_id": "",
+    "region": "",
+    "ssh_username": "",
+    "package_type": "",
+    "packages": "",
+    "configDir": ""
+  },
+  "builders": [
+    {
+      "type": "ecloud-basic",
+      "access_key": "{{user `ecloud_access_key`}}",
+      "secret_key": "{{user `ecloud_secret_key`}}",
+      "region": "{{user `ecloud_region`}}",
+      "zone": "BJJD",
+      "vpc_id": "12b1ce9d4cf8446ea15b13f4cfb80e88",
+      "subnet_id": "2a3f49ab-175f-4de4-b7de-b80f99850dbf",
+      "source_image_id": "{{user `ecloud_source_image_id`}}",
+      "source_image_name": "ecloud_dev_sim0422",
+      "image_name": "{{user `ecloud_target_image`}}",
+      "image_description": "Spinnaker Packer",
+      "instance_type": "s1.medium.2",
+      "instance_name": "ecloud-bake-test",
+      "security_group_id": "d059076d-6792-423b-8b4e-fbb6cf883052",
+      "security_group_name": "default",
+      "ssh_username": "{{user `ecloud_ssh_username`}}",
+      "boot_volumn_size": "40",
+      "boot_volumn_type": "highPerformance",
+      "bandwidth_size": "10",
+      "charge_mode": "trafficCharge",
+      "cpu": "1",
+      "packer_build_name": "ecloud",
+      "ram": "2",
+      "user_data": "test",
+      "vm_type": "common"
+    }
+  ]
+}
