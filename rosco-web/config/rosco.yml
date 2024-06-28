@@ -566,7 +566,22 @@ hecloud:
             flavorId: s3.medium.4
             sourceImageId: 7f85ac91-b70a-42eb-abfb-2748454cd8e3
             sshUserName: root
-
+ecloud:
+  enabled: true
+  bakeryDefaults:
+    templateFile: ecloud.json
+    baseImages:
+      - baseImage:
+          id: centos
+          shortDescription: centos
+          detailedDescription: centos
+          packageType: deb
+          osType: linux
+          templateFile: ecloud.json
+        virtualizationSettings:
+          - region: CIDC-RP-29
+            sourceImageId: 8ae1aba4-f69b-42ab-a34f-89f009568db3
+            sshUserName: root
 
 swagger:
   enabled: true
