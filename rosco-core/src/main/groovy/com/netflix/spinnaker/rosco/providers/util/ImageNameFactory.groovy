@@ -60,7 +60,12 @@ public class ImageNameFactory {
     String arch = baseImageArch ?: "all"
     String release = bakeRequest.ami_suffix ?: timestamp
 
-    [baseName, arch, release, bakeRequest.base_os].findAll{it}.join("-")
+    if (bakeRequest.cloud_provider_type == BakeRequest.CloudProviderType.ecloud) {
+      [baseName, release].findAll { it }.join("_")
+    }
+    else {
+      [baseName, arch, release, bakeRequest.base_os].findAll{it}.join("-")
+    }
   }
 
   /**
