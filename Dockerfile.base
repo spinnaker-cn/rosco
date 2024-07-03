@@ -1,12 +1,8 @@
 FROM openjdk:8-jre-alpine
 
-MAINTAINER delivery-engineering@netflix.com
+MAINTAINER weizhi@mgtv.com
 
 RUN sed -i 's|http://dl-cdn.alpinelinux.org/alpine|https://mirrors.aliyun.com/alpine|g' /etc/apk/repositories
-
-COPY ./rosco-web/build/install/rosco /opt/rosco
-COPY ./rosco-web/config /opt/rosco
-COPY ./rosco-web/config/packer /opt/rosco/config/packer
 
 WORKDIR /packer
 
@@ -22,8 +18,3 @@ RUN wget https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get &&
   ./get && \
   rm get
 
-RUN adduser -D -S spinnaker
-
-USER spinnaker
-
-CMD ["/opt/rosco/bin/rosco"]

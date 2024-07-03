@@ -1,11 +1,15 @@
 buildscript {
   repositories {
+    maven { url "http://spinnaker.maven.cn:8000/repository/spinnaker-public/"}
     jcenter()
-    maven { url "https://spinnaker.bintray.com/gradle" }
+    maven { url "http://spinnaker.bintray.com/gradle" }
     maven { url "https://plugins.gradle.org/m2/" }
   }
   dependencies {
     classpath 'com.netflix.spinnaker.gradle:spinnaker-dev-plugin:5.2.2'
+    classpath 'com.github.jk1:gradle-license-report:1.8'
+    classpath "org.owasp:dependency-check-gradle:6.5.1"
+    classpath 'org.yaml:snakeyaml:1.23'
   }
 }
 
