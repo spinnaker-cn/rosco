@@ -1,0 +1,17 @@
+FROM cs-hub.imgo.tv/devops/spinnaker/rosco-base:v0.0.1
+
+MAINTAINER weizhi@mgtv.com
+
+COPY ./rosco-web/build/install/rosco /opt/rosco
+COPY ./rosco-web/config /opt/rosco
+COPY ./rosco-web/config/packer /opt/rosco/config/packer
+
+WORKDIR /packer
+
+ENV PATH "/packer:$PATH"
+
+RUN adduser -D -S spinnaker
+
+USER spinnaker
+
+CMD ["/opt/rosco/bin/rosco"]
