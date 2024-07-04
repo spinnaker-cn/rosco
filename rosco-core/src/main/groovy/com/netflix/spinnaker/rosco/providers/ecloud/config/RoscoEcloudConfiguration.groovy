@@ -35,7 +35,7 @@ class RoscoEcloudConfiguration {
 
   @Bean
   @ConfigurationProperties('ecloud.bakeryDefaults')
-  EcloudBakeryDefaults tencentBakeryDefaults(@Value('${ecloud.bakeryDefaults.defaultVirtualizationType:hvm}') BakeRequest.VmType defaultVirtualizationType) {
+  EcloudBakeryDefaults ecloudBakeryDefaults(@Value('${ecloud.bakeryDefaults.defaultVirtualizationType:hvm}') BakeRequest.VmType defaultVirtualizationType) {
     new EcloudBakeryDefaults(defaultVirtualizationType: defaultVirtualizationType)
   }
 
