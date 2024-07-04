@@ -10,6 +10,10 @@ WORKDIR /packer
 
 ENV PATH "/packer:$PATH"
 
+COPY packer-plugin-ecloud ./
+
+RUN chmod +x packer-plugin-ecloud
+
 RUN adduser -D -S spinnaker
 
 USER spinnaker
