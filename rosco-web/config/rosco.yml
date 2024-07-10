@@ -570,6 +570,10 @@ ecloud:
   enabled: true
   bakeryDefaults:
     templateFile: ecloud.json
+    accessKey: ${ECLOUD_ACCESS_KEY:}
+    secretKey: ${ECLOUD_SECRET_KEY:}
+    vpcId: ${ECLOUD_VPC_ID:}
+    subnetId: ${ECLOUD_SUBNET_ID:}
     baseImages:
       - baseImage:
           id: centos
