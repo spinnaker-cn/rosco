@@ -1,6 +1,9 @@
-FROM cs-hub.imgo.tv/devops/spinnaker/rosco-base:v0.0.1
+FROM cs-hub.imgo.tv/devops/spinnaker/rosco-base:v0.0.2
 
 MAINTAINER weizhi@mgtv.com
+
+RUN apk --no-cache add tzdata
+ENV TZ=Asia/Shanghai
 
 COPY ./rosco-web/build/install/rosco /opt/rosco
 COPY ./rosco-web/config /opt/rosco
